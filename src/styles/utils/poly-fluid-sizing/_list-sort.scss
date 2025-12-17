@@ -1,0 +1,29 @@
+@use 'sass:list';
+@use './list-remove' as *;
+
+// stylelint-disable
+
+/// list-sort
+/// Sort a SASS list
+/// @param $list - A SASS list
+/// @returns A sorted SASS list
+/// @requires function list-remove
+/// @author Jake Wilson <jake.e.wilson@gmail.com>
+@function list-sort($list) {
+    $sorted-list: ();
+
+    @while list.length($list) > 0 {
+        $value: list.nth($list, 1);
+
+        @each $item in $list {
+            @if $item < $value {
+                $value: $item;
+            }
+        }
+
+        $sorted-list: list.append($sorted-list, $value, 'space');
+        $list: list-remove($list, list.index($list, $value));
+    }
+
+    @return $sorted-list;
+}

@@ -1,0 +1,27 @@
+@use './base/reset';
+@use './utils/reduced-motion';
+@use './page-transition';
+@use './inview';
+@use './tokens/layout';
+@use './typography';
+@use './utils/poly-fluid-sizing/index.scss' as *;
+@use './shared.scss' as *;
+
+html,
+body {
+    color: var(--dark);
+    background-color: var(--light);
+    scroll-behavior: smooth;
+
+    @include poly-fluid-sizing('font-size', $font-size-map);
+
+    @include portrait {
+        @include poly-fluid-sizing('font-size', $font-size-map-pt);
+    }
+}
+
+.h-100 {
+    height: calc(var(--client-h-unit, 1vh) * 100);
+    max-height: calc(var(--client-h-unit, 1vh) * 100);
+    overflow: hidden;
+}

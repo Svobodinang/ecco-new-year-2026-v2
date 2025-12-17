@@ -1,0 +1,13 @@
+section#activities.games-navigation.container-full-size
+    .games-navigation__title-block
+        .games-navigation__decor.games-navigation__decor--right.inview.inview--opacity(aria-hidden)
+        .games-navigation__decor.games-navigation__decor--left.inview.inview--opacity(aria-hidden)
+        h2.games-navigation__title.inview.inview--title
+            span.h2-accent.inview-word.inview-word--accent
+                each letter in ['Ч', 'у', 'д', 'е', 'с', 'а']
+                    span.inview-letter= letter
+            span.h2.games-navigation__title-2.inview-word начинаются
+            span.h2.games-navigation__title-3.inview-word здесь
+        p.games-navigation__text.body-text.inview.inview--opacity!= 'Каждый день на&nbsp;ёлке загорается новая игрушка. Нажмите на&nbsp;нее, чтобы открыть игру дня.'
+
+include ./InteractiveIllustration/index.pug

@@ -1,0 +1,72 @@
+@use '@/styles/shared.scss' as *;
+
+.screen {
+    &--game-photo.screen--title & {
+        &__title {
+            font-size: min(rem(230), vw(200));
+
+            @include portrait {
+                @include phone-h2-accent;
+
+                line-height: 0.56;
+            }
+        }
+    }
+
+    &--game-photo.screen--rules & {
+        &__text-wrapper {
+            max-width: rem(386);
+
+            @include phone {
+                max-width: 100%;
+            }
+        }
+    }
+
+    &--game-photo {
+        .help-text {
+            margin-block: rem(20);
+            max-width: rem(700);
+
+            a {
+                text-decoration: underline;
+                cursor: pointer;
+
+                &:hover {
+                    text-decoration: unset;
+                }
+            }
+
+            p:not(:last-of-type) {
+                margin-bottom: 1em;
+            }
+
+            @include phone {
+                @include label-small;
+
+                max-width: 100%;
+                margin-top: 0;
+                text-align: left;
+            }
+        }
+
+        .widget-wrapper,
+        iframe {
+            max-width: 100%;
+            width: rem(852);
+            height: vh(550);
+
+            @include phone {
+                width: 100%;
+                height: vh(350, true);
+            }
+        }
+
+        .widget-wrapper {
+            @include phone {
+                max-width: calc(100% + var(--container-padding) * 2);
+                width: calc(100% + var(--container-padding) * 2);
+            }
+        }
+    }
+}

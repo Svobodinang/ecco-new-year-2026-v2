@@ -1,0 +1,19 @@
+section.interactive-illustration-wrapper.inview.inview--nav
+    .interactive-illustration.container-full-size(
+        role='image',
+        aria-label='Интерактивная иллюстрация'
+    )
+        .interactive-illustration__layout.interactive-illustration__tree(aria-hidden)
+        .interactive-illustration__shadow.interactive-illustration__shadow--left(aria-hidden)
+        .interactive-illustration__shadow.interactive-illustration__shadow--right(aria-hidden)
+        each index in [1, 2, 3, 4, 5]
+            .interactive-illustration__layout.interactive-illustration-game(
+                aria-hidden,
+                class=`interactive-illustration-game-${index}`,
+                id=`gameNav${index}`
+            )
+                .interactive-illustration__layout.interactive-illustration-game__dark
+                .interactive-illustration__layout.interactive-illustration-game__item-wrapper
+                    .interactive-illustration__layout.interactive-illustration-game__item
+                .interactive-illustration__layout.interactive-illustration-game__candle
+        .interactive-illustration__layout.interactive-illustration__snow(aria-hidden)

@@ -1,0 +1,11 @@
+section#mainPageCards.main-page-cards.container
+    h2.h2.main-page-cards__title.inview.inview--opacity Как все устроено
+    ul.main-page-cards__cards
+        - var list = ['Пять дней&nbsp;&mdash; пять активностей, которые приближают новогоднее чудо', 'Каждый день открывается что-то новое&nbsp;&mdash; от&nbsp;весёлого пазла до&nbsp;поздравления коллеге', 'Не&nbsp;пропускайте дни и&nbsp;создавайте праздничное настроение шаг за&nbsp;шагом!', '25&nbsp;декабря среди самых активных участников будут разыграны призы из&nbsp;ассортимента ECCO'];
+        each val, index in list
+            li.main-page-card.inview.inview--fade-up
+                .main-page-card__content
+                    .main-page-card__index-wrapper
+                        p.main-page-card__index.h1!= `0${index + 1}`
+                        p.main-page-card__point.label-accent Пункт
+                    p.main-page-card__text.label!= val

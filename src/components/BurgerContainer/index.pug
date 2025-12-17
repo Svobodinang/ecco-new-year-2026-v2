@@ -1,0 +1,16 @@
+mixin BurgerContainer(withResults = false)
+    #burger-container.burger-container.with-fade
+        .burger-container__content.container
+            .burger-container__header
+                a.burger-container__logo(href='https://ecco.ru')
+                    include ../svg/logo
+                button#closeBurgerButton.burger-container__cross
+                    include ../svg/cross.pug
+            ul.body-text.burger-container__nav
+                li
+                    a(href='/') Главная
+                li
+                    a#burgerActivities(href='/#activities') Активности
+                if withResults
+                    li
+                    a(href='/results') Как это было

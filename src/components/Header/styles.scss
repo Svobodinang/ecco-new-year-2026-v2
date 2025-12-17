@@ -1,0 +1,63 @@
+@use '@/styles/shared.scss' as *;
+
+.header {
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+    align-items: flex-end;
+    top: 0;
+    height: var(--header-height);
+    z-index: 100;
+
+    @include phone {
+        align-items: center;
+    }
+
+    &.light {
+        color: var(--light);
+    }
+
+    &__logo {
+        width: rem(110);
+
+        svg {
+            width: 100%;
+        }
+
+        @include phone {
+            width: rem(73);
+        }
+    }
+
+    &__burger {
+        display: none;
+
+        @include phone {
+            display: block;
+            width: rem(31);
+
+            svg {
+                width: 100%;
+            }
+        }
+    }
+
+    &__nav {
+        ul {
+            display: flex;
+            gap: rem(26);
+            padding-block: rem(5);
+            align-items: center;
+
+            a {
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        @include phone {
+            display: none;
+        }
+    }
+}

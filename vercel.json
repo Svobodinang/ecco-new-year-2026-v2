@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+        { "source": "/photo", "destination": "/photo.html" },
+        { "source": "/letter", "destination": "/letter.html" },
+        { "source": "/game-puzzle", "destination": "/game-puzzle.html" },
+        { "source": "/game-memory", "destination": "/game-memory.html" },
+        { "source": "/game-five-letters", "destination": "/game-five-letters.html" }
+    ]
+}

@@ -1,0 +1,114 @@
+@use '@/styles/shared.scss' as *;
+
+.main-page-hero {
+    --pt-decor-height: #{vw-vh-contain(191, true)};
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include phone-lp {
+        &.container {
+            max-height: unset;
+            height: auto;
+        }
+    }
+
+    &__decor {
+        background-size: cover;
+        position: absolute;
+
+        &--desktop {
+            background-image: url('/images/main-page/decor-1.png');
+            top: rem(-111);
+            left: rem(196);
+            width: min(rem(661), vw(661));
+            height: min(rem(379), vw(379));
+
+            @include portrait {
+                display: none;
+            }
+        }
+
+        &--portrait {
+            display: none;
+
+            @include portrait {
+                $fs: 191;
+
+                font-size: var(--pt-decor-height);
+                display: block;
+                background-image: url('/images/main-page/decor-1-pt.png');
+                top: em(12, $fs);
+                left: em(-24, $fs);
+                width: em(182, $fs);
+                height: 1em;
+                transform: rotate(-120deg);
+            }
+        }
+    }
+
+    .main-page-hero__title {
+        $fs: 400;
+        $second-fs: 85;
+
+        font-size: min(rem($fs), vw-vh-contain($fs));
+        color: var(--red);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-top: em(185 - 61, $fs);
+        margin-bottom: em(85, $fs);
+
+        @include portrait {
+            margin-bottom: rem(50);
+        }
+
+        @include phone-pt {
+            margin-top: calc(var(--pt-decor-height) - rem(100));
+        }
+
+        &-main {
+            font-size: 1em;
+        }
+
+        &-top,
+        &-bottom {
+            font-size: em($second-fs, $fs);
+            position: absolute;
+            right: em(25, $second-fs);
+        }
+
+        &-top {
+            top: em(107, $second-fs);
+        }
+
+        &-bottom {
+            bottom: em(-20, $second-fs);
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: vw-vh-contain(45);
+        max-width: rem(670);
+        text-align: center;
+
+        &.inview--opacity {
+            transition-delay: 0.5s;
+        }
+
+        @include portrait {
+            max-width: rem(500);
+            gap: rem(28);
+
+            p:not(:last-of-type) {
+                margin-bottom: 1em;
+            }
+        }
+    }
+}

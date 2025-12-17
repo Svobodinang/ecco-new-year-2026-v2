@@ -1,0 +1,37 @@
+@use './sizes' as *;
+
+@mixin desktop {
+    @media (width >= $mobile) and (height >= $mobile) and (orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin portrait {
+    @media (width < $mobile) or (orientation: portrait) {
+        @content;
+    }
+}
+
+@mixin portrait-and-phone-lp {
+    @media (width < $mobile) or (height < $mobile) or (orientation: portrait) {
+        @content;
+    }
+}
+
+@mixin phone {
+    @media (width < $mobile) or (height < $mobile) {
+        @content;
+    }
+}
+
+@mixin phone-pt {
+    @media (width < $mobile) and (orientation: portrait) {
+        @content;
+    }
+}
+
+@mixin phone-lp {
+    @media (height < $mobile) and (orientation: landscape) {
+        @content;
+    }
+}

@@ -1,0 +1,42 @@
+@use '@/styles/shared.scss' as *;
+@use '@/styles/tokens/typography' as *;
+
+.ui-button {
+    color: var(--red);
+    padding: rem(20) rem(60);
+    border-radius: rem(100);
+    min-width: rem(274);
+    border: 1px solid var(--red);
+    cursor: pointer;
+    transition:
+        color $default-transition,
+        background-color $default-transition;
+
+    @include body-text;
+
+    @media (hover: hover) {
+        &:hover {
+            color: var(--light);
+            background-color: var(--red);
+        }
+    }
+
+    &--red {
+        background-color: var(--red);
+        color: var(--light);
+
+        @media (hover: hover) {
+            &:hover {
+                color: var(--red);
+                background-color: transparent;
+            }
+        }
+    }
+
+    @include portrait {
+        padding: rem(16) rem(46);
+        min-width: rem(149);
+
+        @include phone-body-text;
+    }
+}

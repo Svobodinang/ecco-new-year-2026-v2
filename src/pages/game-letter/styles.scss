@@ -1,0 +1,46 @@
+@use '@/styles/shared.scss' as *;
+
+.screen {
+    &--game-letter.screen--title & {
+        &__title {
+            font-size: min(rem(230), vw(210));
+
+            @include portrait {
+                @include phone-h2-accent;
+
+                line-height: 0.56;
+            }
+        }
+    }
+
+    &--game-letter.screen--rules & {
+        &__text-wrapper {
+            max-width: rem(596);
+
+            @include phone {
+                max-width: 100%;
+            }
+        }
+    }
+
+    &--game-letter {
+        .widget-wrapper,
+        iframe {
+            max-width: 100%;
+            width: rem(852);
+            height: vh(650);
+
+            @include phone {
+                width: 100%;
+                height: vh(457, true);
+            }
+        }
+
+        .widget-wrapper {
+            @include phone {
+                max-width: calc(100% + var(--container-padding) * 2);
+                width: calc(100% + var(--container-padding) * 2);
+            }
+        }
+    }
+}

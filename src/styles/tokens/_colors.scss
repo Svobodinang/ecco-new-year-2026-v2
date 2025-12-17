@@ -1,0 +1,22 @@
+@use '../utils/hex-to-rgb' as *;
+
+/// @example
+///   color: var(--black);
+///   background-color: rgba(var(--white-rgb), 0.5);
+$colors: (
+    'dark': #1d2311,
+    'light': #f6efe5,
+    'green': #383e2a,
+    'red': #a31810,
+    'green-middle': #5b6658,
+    'green-light': #9ab56e,
+    'gray': #cccc,
+    'orange': #f8ad5f,
+);
+
+:root {
+    @each $key, $value in $colors {
+        --#{$key}: #{$value};
+        --#{$key}-rgb: #{hex-to-rgb($value)};
+    }
+}

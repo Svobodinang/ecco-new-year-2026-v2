@@ -1,0 +1,111 @@
+@use '@/styles/shared.scss' as *;
+
+.games-navigation {
+    padding-top: rem(60);
+    overflow: hidden;
+
+    @include portrait-and-phone-lp {
+        padding-top: rem(237);
+    }
+
+    &.container-full-size {
+        width: 100%;
+        max-width: 1440px;
+    }
+
+    &__title-block {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: rem(116);
+        margin-bottom: rem(137);
+        position: relative;
+
+        @include portrait-and-phone-lp {
+            gap: rem(70);
+            margin-bottom: rem(91);
+        }
+    }
+
+    &__title {
+        color: var(--red);
+        position: relative;
+        margin-right: rem(581 - 427);
+
+        @include portrait-and-phone-lp {
+            margin-right: rem(146 - 41);
+        }
+
+        .h2-accent {
+            @include portrait-and-phone-lp {
+                @include phone-h1-accent;
+            }
+        }
+
+        &-2,
+        &-3 {
+            position: absolute;
+        }
+
+        &-2 {
+            top: rem(164);
+            right: rem(-152);
+
+            @include portrait-and-phone-lp {
+                top: rem(73);
+                right: rem(-119);
+            }
+        }
+
+        &-3 {
+            top: rem(219);
+            right: rem(22);
+
+            @include portrait-and-phone-lp {
+                top: rem(6 + 100);
+                right: rem(-10);
+            }
+        }
+    }
+
+    &__text {
+        max-width: rem(570);
+        text-align: center;
+
+        @include portrait-and-phone-lp {
+            max-width: rem(335);
+        }
+    }
+
+    &__decor {
+        position: absolute;
+        background-image: url('/images/main-page/decor-2.png');
+        background-size: cover;
+        width: rem(389);
+        height: rem(376);
+        top: rem(84);
+
+        &--right {
+            right: rem(-12);
+            transform: rotate(-164deg);
+
+            @include portrait-and-phone-lp {
+                width: rem(315);
+                height: rem(306);
+                top: rem(-235);
+                right: auto;
+                left: calc(50% - rem(72));
+                transform: rotate(164deg);
+            }
+        }
+
+        &--left {
+            left: rem(-10);
+            transform: rotate(-15deg) scaleY(-1);
+
+            @include portrait-and-phone-lp {
+                display: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+.inview {
+    &--title {
+        .inview-word,
+        .inview-letter {
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.43, 0, 0.18, 1);
+        }
+
+        &.entered {
+            .inview-word,
+            .inview-letter {
+                opacity: 1;
+            }
+        }
+    }
+
+    &--opacity {
+        opacity: 0;
+        transition: opacity 0.5s cubic-bezier(0.25, 0, 0.35, 1);
+
+        &.entered {
+            opacity: 1;
+        }
+    }
+
+    &--fade-up {
+        opacity: 0;
+        transform: translateY(10%);
+        transition:
+            opacity 0.5s cubic-bezier(0.25, 0, 0.35, 1),
+            transform 0.7s cubic-bezier(0.25, 0, 0.35, 1);
+
+        &.entered {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

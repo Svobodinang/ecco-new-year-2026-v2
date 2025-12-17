@@ -1,0 +1,9 @@
+{
+    "extends": "pug-lint-config-clock",
+    "validateIndentation": 4,
+    "requireSpecificAttributes": [
+        {
+            "img": ["alt"]
+        }
+    ]
+}

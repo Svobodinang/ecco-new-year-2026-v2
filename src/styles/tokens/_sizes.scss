@@ -1,0 +1,37 @@
+// Классический размер шрифта, неизменяемый
+$base-font-size: 16;
+
+// Размеры из figma (Не переименовывать, т.к. используются в функциях)
+$figma-width-desktop: 1440;
+$figma-height-desktop: 1024;
+$figma-width-mobile: 375;
+$figma-height-mobile: 667;
+
+$container-width: calc(1px * #{$figma-width-desktop});
+$container-max-width: 1920;
+
+// для адаптива
+$desktop-lg: 1920px;
+$desktop-md: 1512px;
+$laptop: 1024px;
+$tablet: 768px;
+$mobile: 600px;
+
+// Ключевые точки для основного шрифта
+$font-size-map: (
+    $figma-width-mobile * 1px: $base-font-size * 1px,
+    $mobile: $base-font-size * 1px,
+    $tablet: 10px,
+    1024px: 11px,
+    $figma-width-desktop * 1px: $base-font-size * 1px,
+    $desktop-md: 16px,
+    $desktop-lg: 16px
+);
+
+$font-size-map-pt: (
+    300px: 14px,
+    $figma-width-mobile * 1px: $base-font-size * 1px,
+    $mobile: $base-font-size * 1px,
+    $tablet: 18px,
+    $figma-width-desktop * 1px: 20px,
+);

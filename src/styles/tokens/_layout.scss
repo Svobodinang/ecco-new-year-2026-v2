@@ -1,0 +1,38 @@
+@use '../shared' as *;
+@use 'sass:math';
+
+:root {
+    --container-width: Min(#{rem($container-width)}, 100% - (var(--container-padding) * 2));
+    --container-padding: #{rem(50)};
+    --header-height: #{rem(70)};
+
+    @include portrait-and-phone-lp {
+        --container-padding: #{rem(54)};
+        --header-height: #{rem(59)};
+    }
+
+    @include phone-pt {
+        --container-padding: #{rem(20)};
+        --header-height: #{rem(45)};
+    }
+}
+
+.container {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto;
+    padding-inline: var(--container-padding);
+    max-width: #{rem($container-max-width)};
+}
+
+.container-full-size {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto;
+    max-width: #{rem($container-max-width)};
+}
+
+.paper-texture-bg {
+    background-image: url('/images/paper-texture-white.jpg');
+    background-repeat: repeat;
+}

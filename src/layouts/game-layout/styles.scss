@@ -1,0 +1,290 @@
+@use '@/styles/shared.scss' as *;
+
+.game-layout {
+    $d-size: 1754;
+    $d-width-pt: 433;
+    $d-height-pt: 722;
+
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    background-color: var(--green);
+    padding-top: var(--header-height);
+    overflow: hidden;
+    position: relative;
+
+    &.h-100 {
+        max-height: unset;
+        height: auto;
+        min-height: calc(var(--client-h-unit, 1vh) * 100);
+    }
+
+    &__content-and-help-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    &__content-container {
+        padding-block: rem(30);
+        flex-shrink: 0;
+        flex-grow: 1;
+        position: relative;
+
+        @include phone-pt {
+            padding-top: 0;
+            padding-block: var(--container-padding);
+        }
+    }
+
+    &__content-wrapper {
+        height: 100%;
+        border-radius: rem(20);
+        padding: rem(24) rem(34);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include phone {
+            padding: var(--container-padding);
+        }
+    }
+
+    &__title-wrapper {
+        align-self: flex-start;
+
+        .text-accent {
+            color: var(--red);
+        }
+
+        @include phone {
+            margin-bottom: rem(20);
+        }
+    }
+
+    &__container-wrapper {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    &__screen-container {
+        width: 100%;
+    }
+
+    &__help-container {
+        max-width: 100%;
+        background-image: url('/images/paper-texture-white.jpg');
+        background-repeat: repeat;
+        z-index: 1;
+    }
+
+    &__decor-wrapper {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+    }
+
+    &__decor {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: percent($d-size, $figma-width-desktop);
+        max-width: rem(2338);
+        height: percent($d-size, $figma-height-desktop);
+        pointer-events: none;
+        overflow: visible;
+
+        @include portrait {
+            width: percent($d-width-pt, $figma-width-mobile);
+            height: percent($d-height-pt, $figma-height-mobile);
+        }
+    }
+
+    &__decor-border {
+        position: absolute;
+        background-repeat: repeat;
+
+        &--bottom,
+        &--top {
+            left: percent(148, $d-size);
+            width: percent(1457, $d-size);
+            height: percent(310, $d-size);
+            background-size: auto 100%;
+            background-image: url('/images/tree-pattern.png');
+
+            @include portrait {
+                left: percent(17, $d-width-pt);
+                width: percent(408, $d-width-pt);
+                height: percent(87, $d-height-pt);
+            }
+        }
+
+        &--bottom {
+            bottom: percent(265, $d-size);
+
+            @include portrait {
+                bottom: 0;
+            }
+        }
+
+        &--top {
+            top: percent(231, $d-size);
+            transform: scaleY(-1);
+
+            @include portrait {
+                top: 0;
+            }
+        }
+
+        &--right,
+        &--left {
+            bottom: percent(446, $d-size);
+            background-image: url('/images/tree-pattern-right.png');
+            background-size: 100% auto;
+            height: percent(1457, $d-size);
+            width: percent(310, $d-size);
+
+            @include portrait {
+                top: percent(82, $d-height-pt);
+                width: percent(87, $d-width-pt);
+                height: percent(557, $d-height-pt);
+            }
+        }
+
+        &--right {
+            right: 0;
+        }
+
+        &--left {
+            left: 0;
+            transform: scaleX(-1);
+        }
+    }
+
+    &__decor-shadow {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: radial-gradient(74.09% 39.65% at 50% 50%, rgb(56 62 42 / 0%) 0%, #383e2a 100%);
+
+        @include portrait {
+            background: radial-gradient(
+                63.83% 55.77% at 50% 50%,
+                rgb(56 62 42 / 0%) 0%,
+                #383e2a 100%
+            );
+        }
+    }
+}
+
+.screen {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &--title & {
+        &__eyebrow,
+        &__title {
+            color: var(--red);
+        }
+
+        &__eyebrow {
+            margin-bottom: rem(-60);
+
+            @include portrait {
+                margin-bottom: rem(16);
+
+                @include phone-text-accent;
+            }
+        }
+
+        &__title {
+            margin-bottom: rem(136);
+
+            @include phone {
+                margin-bottom: rem(100);
+            }
+        }
+
+        &__date {
+            margin-bottom: rem(42);
+        }
+    }
+
+    &--rules,
+    &--win,
+    &--loose {
+        padding-bottom: rem(30);
+
+        @include phone {
+            padding-bottom: 0;
+        }
+    }
+
+    &--rules &,
+    &--win &,
+    &--lose & {
+        &__title {
+            margin-bottom: rem(60);
+            color: var(--red);
+
+            @include phone {
+                margin-bottom: rem(28);
+            }
+        }
+
+        &__text-wrapper {
+            margin-bottom: rem(45);
+
+            @include phone {
+                margin-bottom: rem(28);
+            }
+
+            ul {
+                text-align: left;
+
+                li {
+                    position: relative;
+                    padding-left: 1.5em;
+
+                    &::before {
+                        content: '— ';
+                        display: block;
+                        position: absolute;
+                        left: 0;
+                    }
+                }
+            }
+
+            p:not(:last-child),
+            ul:not(:last-child) {
+                margin-bottom: 1em;
+            }
+        }
+    }
+
+    &--win &,
+    &--lose & {
+        &__text-wrapper {
+            max-width: rem(342);
+        }
+
+        &__buttons-wrapper {
+            display: flex;
+            gap: rem(24);
+
+            @include phone {
+                flex-direction: column;
+                gap: rem(8);
+            }
+        }
+    }
+}

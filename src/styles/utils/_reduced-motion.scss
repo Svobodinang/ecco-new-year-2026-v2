@@ -1,0 +1,8 @@
+// stylelint-disable
+* {
+    @media screen and (prefers-reduced-motion: reduce), (update: slow) {
+        animation: none 0s ease !important;
+        animation-iteration-count: 1 !important;
+        transition: none 0s ease !important;
+    }
+}

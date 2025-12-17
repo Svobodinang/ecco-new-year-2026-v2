@@ -1,0 +1,43 @@
+@use 'sass:math';
+@use 'sass:list';
+@use '../tokens/sizes' as *;
+
+@function em($px, $inherited-px) {
+    @return #{math.div($px, $inherited-px)}em;
+}
+
+@function percent($px, $base: 1) {
+    @return 100% * math.div($px, $base);
+}
+
+@function rem($px) {
+    @return calc(#{list.slash($px, $base-font-size)} * 1rem);
+}
+
+@function vw($px, $mobile: false) {
+    $base: if($mobile == true, $figma-width-mobile, $figma-width-desktop);
+
+    @return #{$px * math.div(100, $base)}vw;
+}
+
+@function vh($px, $mobile: false) {
+    $base: if($mobile == true, $figma-height-mobile, $figma-height-desktop);
+
+    @return #{$px * math.div(100, $base)}vh;
+}
+
+@function vw-vh-contain($px, $mobile: false) {
+    $vw: vw($px, $mobile);
+    $vh: vh($px, $mobile);
+
+    // very cool kostyl coz sass is case-sensitive, but css isn't
+    @return Min(#{$vw}, #{$vh});
+}
+
+@function vw-vh-cover($px, $mobile: false) {
+    $vw: vw($px, $mobile);
+    $vh: vh($px, $mobile);
+
+    // very cool kostyl coz sass is case-sensitive, but css isn't
+    @return Max(#{$vw}, #{$vh});
+}

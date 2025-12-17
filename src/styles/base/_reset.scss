@@ -1,0 +1,72 @@
+a,
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: unset;
+
+    &::-moz-focus-inner {
+        // stylelint-disable-next-line
+        border: 0 !important;
+    }
+
+    &:active,
+    &:focus {
+        // stylelint-disable-next-line
+        outline: none !important;
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html,
+body,
+nav,
+header,
+footer,
+article,
+section,
+figure,
+figcaption,
+blockquote,
+cite,
+div,
+li,
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+p,
+label {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+img {
+    border: 0;
+}
+
+li,
+ul,
+ol {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}

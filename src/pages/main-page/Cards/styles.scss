@@ -1,0 +1,150 @@
+@use '@/styles/shared.scss' as *;
+
+.main-page-cards {
+    padding-top: rem(30);
+    padding-bottom: rem(128);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include portrait-and-phone-lp {
+        padding-top: rem(10);
+        padding-bottom: 0;
+    }
+
+    &__title {
+        text-align: center;
+        color: var(--red);
+        margin-bottom: rem(46);
+    }
+
+    &__cards {
+        display: flex;
+        gap: rem(12);
+        justify-content: center;
+
+        @include portrait-and-phone-lp {
+            flex-wrap: wrap;
+        }
+    }
+
+    .main-page-card {
+        width: rem(326);
+        max-width: 100%;
+        height: rem(466);
+        background-image: url('/images/main-page/card-back.png');
+        background-size: 100% 100%;
+        color: var(--light);
+        padding: rem(23);
+        border-radius: rem(15);
+        box-shadow: 3px 3px 7px 0 rgb(0 0 0 / 15%);
+
+        @include portrait-and-phone-lp {
+            width: rem(295);
+            height: rem(362);
+        }
+
+        &__content {
+            background-size: 100% 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 100%;
+            padding-inline: rem(24);
+            overflow: hidden;
+
+            @include portrait-and-phone-lp {
+                padding-inline: rem(14);
+                padding-top: rem(20);
+            }
+        }
+
+        @for $i from 1 to 5 {
+            &:nth-child(#{$i}) {
+                transition-delay: $i * 0.15s;
+
+                @include portrait-and-phone-lp {
+                    transition-delay: 0s;
+                }
+
+                .main-page-card__content {
+                    background-image: url('/images/main-page/card-#{$i}.png');
+                }
+            }
+        }
+
+        &:nth-child(3) {
+            .main-page-card__content {
+                &::before {
+                    position: absolute;
+                    content: '';
+                    width: rem(252);
+                    height: rem(268);
+                    background-image: url('/images/main-page/card-decor.png');
+                    background-size: cover;
+                    bottom: rem(-80);
+                    right: rem(-54);
+
+                    @include portrait-and-phone-lp {
+                        width: rem(163);
+                        height: rem(173);
+                        bottom: rem(-45);
+                        right: rem(-30);
+                    }
+                }
+            }
+        }
+
+        &__index-wrapper {
+            position: absolute;
+            top: 0;
+            left: rem(14);
+        }
+
+        &__index {
+            margin-bottom: rem(12 - 70);
+
+            @include portrait-and-phone-lp {
+                font-size: rem(72);
+                margin-bottom: rem(14 - 50);
+            }
+        }
+
+        &__point {
+            transform: rotate(-4deg);
+            margin-left: rem(3);
+
+            @include portrait-and-phone-lp {
+                margin-left: rem(7);
+            }
+        }
+
+        &__text {
+            text-align: center;
+        }
+    }
+
+    .call-to-action-block {
+        margin-top: rem(87);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: rem(666);
+
+        @include portrait-and-phone-lp {
+            margin-top: rem(53);
+            max-width: rem(335);
+        }
+
+        &__text {
+            text-align: center;
+            margin-bottom: rem(45);
+
+            @include portrait-and-phone-lp {
+                margin-bottom: rem(28);
+            }
+        }
+    }
+}

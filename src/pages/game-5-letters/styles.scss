@@ -1,0 +1,187 @@
+@use '@/styles/shared.scss' as *;
+
+@mixin common-grid-keyboard-styles {
+    width: 100%;
+
+    .row {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .cell {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color $default-transition;
+
+        &[status='incorrect'] {
+            background-color: var(--gray);
+        }
+
+        &[status='correct'] {
+            background-color: var(--green-light);
+        }
+
+        &[status='present'] {
+            background-color: var(--orange);
+        }
+    }
+}
+
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(5);
+
+    @include common-grid-keyboard-styles;
+
+    @include phone {
+        padding: rem(20) rem(9) rem(40);
+        gap: rem(8);
+    }
+
+    .row {
+        display: flex;
+        gap: rem(5);
+
+        @include phone {
+            gap: rem(2);
+        }
+    }
+
+    .cell {
+        width: rem(51);
+        height: rem(45);
+        border: 1px solid var(--dark);
+        border-radius: rem(5);
+        cursor: pointer;
+
+        @include phone {
+            width: rem(28);
+            height: rem(36);
+        }
+
+        &.spec-key {
+            width: rem(81);
+            background-color: var(--gray);
+            border: unset;
+
+            @include phone {
+                width: rem(36);
+
+                img {
+                    width: rem(20);
+                }
+            }
+
+            &:disabled {
+                pointer-events: none;
+            }
+
+            &.ok {
+                &:not(:disabled) {
+                    background-color: var(--green-light);
+                }
+
+                @include phone {
+                    img {
+                        width: rem(15);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.screen {
+    &--5-letters.screen--rules & {
+        &__text-wrapper {
+            max-width: rem(642);
+
+            @include phone {
+                max-width: 100%;
+            }
+
+            .color {
+                position: relative;
+                display: inline-flex;
+                justify-content: center;
+
+                span {
+                    z-index: 2;
+                    position: relative;
+                }
+
+                &::before {
+                    position: absolute;
+                    content: '';
+                    height: 100%;
+                    border-radius: em(5, 22);
+                    width: percent(201, 196);
+                }
+
+                &--green {
+                    &::before {
+                        background-color: var(--green-light);
+                    }
+                }
+
+                &--gray {
+                    &::before {
+                        background-color: var(--gray);
+                    }
+                }
+
+                &--orange {
+                    &::before {
+                        background-color: var(--orange);
+                    }
+                }
+            }
+        }
+    }
+
+    &--5-letters.screen--game {
+        display: flex;
+        flex-direction: column;
+        gap: rem(51);
+        align-items: center;
+
+        .grid {
+            @include common-grid-keyboard-styles;
+
+            display: flex;
+            flex-direction: column;
+            gap: rem(10);
+
+            @include phone {
+                gap: rem(8);
+            }
+
+            .row {
+                display: flex;
+                gap: rem(10);
+
+                @include phone {
+                    gap: rem(8);
+                }
+            }
+
+            .cell {
+                width: rem(65);
+                height: rem(57);
+                border: 1px solid var(--dark);
+                border-radius: rem(5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                @include phone {
+                    width: rem(53);
+                    height: rem(40);
+                }
+            }
+        }
+    }
+}

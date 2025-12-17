@@ -1,0 +1,15 @@
+mixin Header(theme = 'dark', withResults = false)
+    header.header.container(class=theme)
+        a.header__logo(href='https://ecco.ru')
+            include ../svg/logo
+        button#burgerButton.header__burger
+            include ../svg/burger
+        nav.header__nav
+            ul.label
+                li
+                    a(href='/') Главная
+                li
+                    a(href='/#activities') Активности
+                if withResults
+                    li
+                        a(href='/results') Как это было

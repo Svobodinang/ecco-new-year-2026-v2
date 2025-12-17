@@ -1,0 +1,18 @@
+include ../../../components/Header/index.pug
+section.main-page-hero.h-100.container
+    +Header('dark')
+    h1.main-page-hero__title.inview.inview--first-load.inview--title
+        span.h1.uppercase.main-page-hero__title-top.inview-word В ожидании
+        span.h1-accent.main-page-hero__title-main.inview-word.inview-word--accent
+            each letter in ['Н', 'о', 'в', 'о', 'г', 'о', 'д', 'н', 'е', 'г', 'о']
+                span.inview-letter= letter
+        span.h1.uppercase.main-page-hero__title-bottom.inview-word чуда
+    .main-page-hero__decor.main-page-hero__decor--desktop.inview.inview--first-load.inview--opacity(
+        aria-hidden
+    )
+    .main-page-hero__decor.main-page-hero__decor--portrait.inview.inview--first-load.inview--opacity(
+        aria-hidden
+    )
+    .main-page-hero__content.inview.inview--first-load.inview--opacity
+        .main-page-hero__text.body-text!= '<p>Время создавать новогоднее настроение! В&nbsp;течении&nbsp;пяти дней вас будут ждать небольшие увлекательные игры&nbsp;&mdash; по&nbsp;одной активности в&nbsp;день.</p> <p>Участвуйте в&nbsp;каждой, чтобы почувствовать атмосферу праздника и&nbsp;получить шанс выиграть главный приз в&nbsp;финальном розыгрыше. Зарядитесь вдохновением и&nbsp;новогодним чудом вместе с&nbsp;ECCO!</p>'
+        a.ui-button(href='#activities') К&nbsp;активностям

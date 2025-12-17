@@ -1,0 +1,38 @@
+@use '@/styles/shared.scss' as *;
+
+.footer {
+    padding-block: rem(200);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: rem(34);
+
+    @include portrait-and-phone-lp {
+        padding-block: rem(70);
+    }
+
+    &__logo {
+        width: rem(256);
+        height: rem(70);
+
+        @include portrait-and-phone-lp {
+            width: rem(180);
+            height: rem(49);
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__text {
+        max-width: rem(569);
+        text-align: center;
+
+        @include portrait-and-phone-lp {
+            max-width: rem(335);
+        }
+    }
+}

@@ -1,0 +1,140 @@
+@use './font-faces' as *;
+@use './sizes' as *;
+@use '../utils/functions' as *;
+
+// fonts
+@mixin ff-default {
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+}
+
+@mixin ff-title {
+    font-family: Cormorant, sans-serif;
+    font-weight: 400;
+    font-variant-numeric: lining-nums proportional-nums;
+}
+
+@mixin ff-accent {
+    font-family: PassionsConflictRUS, sans-serif;
+    font-weight: 400;
+}
+
+// text
+@mixin h1 {
+    font-size: rem(85);
+    line-height: 1.2;
+
+    @include ff-title;
+}
+
+@mixin phone-h1 {
+    font-size: rem(22);
+    line-height: 1.2;
+
+    @include ff-title;
+}
+
+@mixin h1-accent {
+    font-size: rem(400);
+    line-height: 1;
+
+    @include ff-accent;
+}
+
+@mixin phone-h1-accent {
+    font-size: rem(100);
+    line-height: 1;
+
+    @include ff-accent;
+}
+
+@mixin h2 {
+    font-size: rem(65);
+    line-height: 1.2;
+
+    @include ff-title;
+}
+
+@mixin phone-h2 {
+    font-size: rem(40);
+    line-height: 1.2;
+
+    @include ff-title;
+}
+
+@mixin h2-accent {
+    font-size: rem(230);
+    line-height: 1;
+
+    @include ff-accent;
+}
+
+@mixin phone-h2-accent {
+    font-size: rem(85);
+    line-height: 0.56;
+
+    @include ff-accent;
+}
+
+@mixin body-text {
+    font-size: rem(22);
+    line-height: 1.2;
+
+    @include ff-default;
+}
+
+@mixin phone-body-text {
+    font-size: rem(16);
+    line-height: 1.2;
+
+    @include ff-default;
+}
+
+@mixin label {
+    font-size: rem(18);
+    line-height: 1.2;
+
+    @include ff-default;
+}
+
+@mixin phone-label {
+    font-size: rem(16);
+    line-height: 1.2;
+
+    @include ff-default;
+}
+
+@mixin label-accent {
+    font-size: rem(70);
+    line-height: 1;
+
+    @include ff-accent;
+}
+
+@mixin phone-label-accent {
+    font-size: rem(50);
+    line-height: 1;
+
+    @include ff-accent;
+}
+
+@mixin text-accent {
+    font-size: rem(45);
+    line-height: 1.2;
+
+    @include ff-title;
+}
+
+@mixin phone-text-accent {
+    font-size: rem(28);
+    line-height: 1.2;
+
+    @include ff-title;
+}
+
+@mixin label-small {
+    font-size: rem(14);
+    line-height: 1.2;
+
+    @include ff-default;
+}
