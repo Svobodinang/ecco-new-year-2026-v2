@@ -1,32 +1,5 @@
 import { append, h } from '@/scripts/core/dom';
-
-interface IGame {
-    date: string;
-    to: string;
-}
-
-const games: IGame[] = [
-    {
-        date: '2025-12-16',
-        to: './game-puzzle',
-    },
-    {
-        date: '2025-12-16',
-        to: './photo',
-    },
-    {
-        date: '2025-12-16',
-        to: './game-five-letters',
-    },
-    {
-        date: '2025-12-16',
-        to: './game-memory',
-    },
-    {
-        date: '2025-12-16',
-        to: './letter',
-    },
-];
+import { games } from '@/scripts/games';
 
 export const useGameNavigation = (): (() => void) => {
     const today = new Date();

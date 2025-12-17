@@ -95,7 +95,7 @@
 }
 
 .screen {
-    &--5-letters.screen--rules & {
+    &--game-five-letters.screen--rules & {
         &__text-wrapper {
             max-width: rem(642);
 
@@ -142,7 +142,7 @@
         }
     }
 
-    &--5-letters.screen--game {
+    &--game-five-letters.screen--game {
         display: flex;
         flex-direction: column;
         gap: rem(51);

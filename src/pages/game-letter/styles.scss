@@ -1,7 +1,7 @@
 @use '@/styles/shared.scss' as *;
 
 .screen {
-    &--game-letter.screen--title & {
+    &--letter.screen--title & {
         &__title {
             font-size: min(rem(230), vw(210));
 
@@ -13,7 +13,7 @@
         }
     }
 
-    &--game-letter.screen--rules & {
+    &--letter.screen--rules & {
         &__text-wrapper {
             max-width: rem(596);
 
@@ -23,7 +23,7 @@
         }
     }
 
-    &--game-letter {
+    &--letter {
         .widget-wrapper,
         iframe {
             max-width: 100%;
