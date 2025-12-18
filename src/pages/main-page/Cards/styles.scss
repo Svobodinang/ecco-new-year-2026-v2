@@ -104,10 +104,25 @@
 
         &__index {
             margin-bottom: rem(12 - 70);
+            position: relative;
 
             @include portrait-and-phone-lp {
                 font-size: rem(72);
                 margin-bottom: rem(14 - 50);
+            }
+
+            &::after {
+                $fs: 85;
+
+                position: absolute;
+                content: '';
+                width: em(86, $fs);
+                height: em(34, $fs);
+                top: em(59, $fs);
+                left: em(-1, $fs);
+                background-image: url('/images/main-page/card-line-decor.png');
+                background-size: 100% 100%;
+                transform: rotate(19deg);
             }
         }
 

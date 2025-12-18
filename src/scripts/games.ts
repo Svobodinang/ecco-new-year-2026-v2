@@ -1,6 +1,6 @@
 export interface IGame {
     id: string;
-    date: string;
+    date: string; // Дата открытия игры в формате ГГГГ-ММ-ДД, влияет на открытие игры
     dateText: string;
     to: string;
 }
