@@ -12,7 +12,13 @@ type TScreenBuilder = (content: IContent, clickHandler?: () => void) => HTMLElem
 type TScreenBuilder2 = (
     content: IContent,
     clickHandler1?: () => void,
-    clickHandler2?: () => void
+    clickHandler2?: () => void,
+    showSaveResultsInfo?: boolean
+) => HTMLElement;
+type TScreenBuilder3 = (
+    content: IContent,
+    clickHandler1?: () => void,
+    showSaveResultsInfo?: boolean
 ) => HTMLElement;
 
 export const buildTitleScreen: TScreenBuilder = (content, clickHandler) => {
@@ -123,7 +129,7 @@ export const buildWinScreen: TScreenBuilder2 = (content, clickHandler1, clickHan
         h(
             'div',
             { class: 'screen__text-wrapper body-text' },
-            'Первый шаг к новогоднему чуду сделан!'
+            'Еще один шаг к&nbsp;новогоднему чуду сделан!'
         ),
         h(
             'div',
@@ -148,7 +154,11 @@ export const buildWinScreen: TScreenBuilder2 = (content, clickHandler1, clickHan
     );
 };
 
-export const buildWinAuthScreen: TScreenBuilder = (content, clickHandler) => {
+export const buildWinAuthScreen: TScreenBuilder3 = (
+    content,
+    clickHandler,
+    hideSaveResultsInfo = false
+) => {
     const onClick = () => {
         if (clickHandler) clickHandler();
     };
@@ -160,7 +170,7 @@ export const buildWinAuthScreen: TScreenBuilder = (content, clickHandler) => {
         h(
             'div',
             { class: 'screen__text-wrapper body-text' },
-            '<p>Первый шаг к новогоднему чуду сделан!</p><p>Результат о&nbsp;прохождения активности сохранен!</p>'
+            `<p>Еще один шаг к&nbsp;новогоднему чуду сделан!</p>${hideSaveResultsInfo ? '' : '<p>Результат о&nbsp;прохождения активности сохранен!</p>'}`
         ),
         h(
             'div',
@@ -179,4 +189,36 @@ export const buildWinAuthScreen: TScreenBuilder = (content, clickHandler) => {
 
 export const buildGameScreen: TScreenBuilder = (content) => {
     return h('div', { class: `screen screen--game ${content.screenClass}`, id: 'game-container' });
+};
+
+export const buildTitleStopPhotoScreen: TScreenBuilder = (content) => {
+    const letters = [];
+    for (const letter of content.title) {
+        letters.push(h('span', { class: 'inview-letter' }, letter));
+    }
+
+    return h(
+        'div',
+        {
+            class: `screen screen--title ${content.screenClass}`,
+        },
+        h(
+            'div',
+            { class: 'inview inview--first-load inview--title' },
+            h('p', { class: 'h2 uppercase screen__eyebrow inview-word' }, content.eyebrow),
+            h('h1', { class: 'h2-accent screen__title inview-word inview-word--accent' }, letters)
+        ),
+        h(
+            'p',
+            { class: 'screen__date body-text inview inview--first-load inview--opacity' },
+            content.date
+        ),
+        h(
+            'p',
+            {
+                class: 'screen__stop-text body-text inview inview--first-load inview--opacity',
+            },
+            'Прием новогодних фотографий окончен, активность больше не&nbsp;доступна.'
+        )
+    );
 };

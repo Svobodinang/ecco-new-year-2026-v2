@@ -7,6 +7,7 @@ import {
     buildLoseScreen,
     buildWinScreen,
     buildWinAuthScreen,
+    buildTitleStopPhotoScreen,
     IContent,
 } from './screens';
 import { TScreensMap } from '@/scripts/core/screen-manager';
@@ -20,14 +21,15 @@ import { PhotoWidget } from '../game-photo/photoWidget';
 import { LetterWidget } from '../game-letter/letterWidget';
 import { GamePuzzleController } from '../game-puzzle/game/controller';
 import { useInview } from '@/scripts/useInview';
+import { useResults } from '../../useResults';
+import { currentProjectStatus, gameIds, IGame, projectStatuses } from '@/scripts/games';
 
 export const useScreenManager = ({
-    form,
     gameKey,
     GameControllerClass,
     content,
+    game,
 }: {
-    form: Form;
     gameKey: string;
     GameControllerClass:
         | typeof Game5lettersController
@@ -36,12 +38,28 @@ export const useScreenManager = ({
         | typeof LetterWidget
         | typeof GamePuzzleController;
     content: IContent;
+    game: IGame;
 }) => {
     const container: HTMLElement | null = document.getElementById('screen-container');
     const helpTitleContainer: HTMLElement | null = document.getElementById('title-wrapper');
     const cleanupList: (() => void)[] = [];
 
-    if (!container || !helpTitleContainer) return () => {};
+    const openDate = new Date(game.date);
+    openDate.setHours(0, 0, 0, 0);
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if (!container || !helpTitleContainer || today < openDate) return () => {};
+
+    let form: Form | null = null;
+    if (currentProjectStatus === projectStatuses.IN_PROGRESS) {
+        form = new Form();
+        cleanupList.push(() => form?.cleanup());
+    }
+    if (currentProjectStatus === projectStatuses.ENDED) {
+        useResults();
+    }
 
     const helpTitleScreens: TScreensMap = {
         helpTitle: () => {
@@ -56,7 +74,11 @@ export const useScreenManager = ({
         onEndGame: (status: string, noChangeScreen?: boolean): void => {
             setTimeout(() => {
                 if (status === gameStatuses.WIN) {
-                    if (!form.isAuth) {
+                    if (
+                        currentProjectStatus === projectStatuses.IN_PROGRESS &&
+                        form &&
+                        !form.isAuth
+                    ) {
                         if (!noChangeScreen) manager.showScreen('winNotAuth');
                     } else {
                         setCookie(gameKey, 'win');
@@ -70,7 +92,10 @@ export const useScreenManager = ({
     const screens: TScreensMap = {
         title: () => {
             return {
-                newNode: buildTitleScreen(content, () => manager.showScreen('rules')),
+                newNode:
+                    currentProjectStatus === projectStatuses.ENDED && game.id === gameIds.PHOTO
+                        ? buildTitleStopPhotoScreen(content)
+                        : buildTitleScreen(content, () => manager.showScreen('rules')),
                 onMount: () => {
                     cleanupList.push(useInview());
                 },
@@ -79,7 +104,11 @@ export const useScreenManager = ({
         rules: () => {
             return {
                 newNode: buildRulesScreen(content, () => {
-                    if (!form.isAuth) {
+                    if (
+                        currentProjectStatus === projectStatuses.IN_PROGRESS &&
+                        form &&
+                        !form.isAuth
+                    ) {
                         form.showScreen({
                             screenName: formScreenNames.CALL,
                             onClose: () => {
@@ -118,7 +147,7 @@ export const useScreenManager = ({
                 newNode: buildWinScreen(
                     content,
                     () =>
-                        form.showScreen({
+                        form?.showScreen({
                             screenName: formScreenNames.FORM,
                             onAuth: () => {
                                 setCookie(gameKey, 'win');
@@ -131,7 +160,11 @@ export const useScreenManager = ({
         },
         winAuth: () => {
             return {
-                newNode: buildWinAuthScreen(content, () => manager.showScreen('game')),
+                newNode: buildWinAuthScreen(
+                    content,
+                    () => manager.showScreen('game'),
+                    !!(currentProjectStatus === projectStatuses.ENDED)
+                ),
             };
         },
     };

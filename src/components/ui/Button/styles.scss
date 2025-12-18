@@ -2,6 +2,7 @@
 @use '@/styles/tokens/typography' as *;
 
 .ui-button {
+    display: inline-block;
     color: var(--red);
     padding: rem(20) rem(60);
     border-radius: rem(100);

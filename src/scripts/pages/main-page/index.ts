@@ -5,6 +5,8 @@ import { useCallToAction } from './useCallToAction';
 import { useGameNavigation } from './useGameNavigation';
 import { useBurgerMenu } from '../../useBurgerMenu';
 import { useInview } from '../../useInview';
+import { currentProjectStatus, projectStatuses } from '@/scripts/games';
+import { useResults } from '../../useResults';
 
 const init = () => {
     const cleanupList: (() => void)[] = [];
@@ -13,6 +15,10 @@ const init = () => {
     cleanupList.push(() => form.cleanup());
 
     window.addEventListener('DOMContentLoaded', () => {
+        if (currentProjectStatus === projectStatuses.ENDED) {
+            useResults();
+        }
+
         cleanupList.push(useCallToAction(form));
         cleanupList.push(useGameNavigation());
         cleanupList.push(useBurgerMenu());

@@ -13,6 +13,15 @@ export const gameIds = {
     GAME_PUZZLE: 'game-puzzle',
 } as const;
 
+export const projectStatuses = {
+    IN_PROGRESS: 'in_progress',
+    ENDED: 'ended',
+} as const;
+
+// ! Когда проект окончен поставить статус на projectStatuses.ENDED
+export const currentProjectStatus: string = projectStatuses.IN_PROGRESS;
+
+// ! Заменить date на реальную дату открытия игры
 export const games: IGame[] = [
     {
         id: gameIds.GAME_FIVE_LETTERS,

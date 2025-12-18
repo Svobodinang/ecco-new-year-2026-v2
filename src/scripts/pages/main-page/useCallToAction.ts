@@ -1,5 +1,6 @@
 import { append, h } from '@/scripts/core/dom';
 import { Form, screenNames } from '@/scripts/form';
+import { currentProjectStatus, projectStatuses } from '@/scripts/games';
 
 export const useCallToAction = (form: Form): (() => void) => {
     let callToActionBlock: HTMLElement | null = null;
@@ -15,7 +16,7 @@ export const useCallToAction = (form: Form): (() => void) => {
         form.showScreen({ screenName: screenNames.FORM, onAuth: removeCallToAction });
     };
 
-    if (!form.isAuth) {
+    if (!form.isAuth && currentProjectStatus === projectStatuses.IN_PROGRESS) {
         callToActionBlock = h(
             'div',
             { class: 'call-to-action-block' },

@@ -1,4 +1,3 @@
-import { Form } from '@/scripts/form';
 import { IContent } from '../game-common/screens';
 import { useScreenManager } from '../game-common/screen-manager';
 import { Game5lettersController } from './game/controller';
@@ -20,18 +19,15 @@ const init = () => {
     const cleanupList: (() => void)[] = [];
     const gameKey = `ecco_${curentGame.id}`;
 
-    const form = new Form();
-    cleanupList.push(() => form.cleanup());
-
     window.addEventListener('DOMContentLoaded', () => {
         cleanupList.push(useBurgerMenu());
 
         cleanupList.push(
             useScreenManager({
-                form,
                 gameKey,
                 GameControllerClass: Game5lettersController,
                 content,
+                game: curentGame,
             })
         );
     });

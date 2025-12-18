@@ -1,0 +1,31 @@
+@use '@/styles/shared.scss' as *;
+
+.main-page-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-block: rem(135);
+
+    &__title {
+        color: var(--red);
+        margin-bottom: rem(24);
+
+        @include portrait-and-phone-lp {
+            margin-bottom: rem(50);
+        }
+    }
+
+    &__text-wrapper {
+        max-width: rem(638);
+        margin-bottom: rem(45);
+        text-align: center;
+
+        @include portrait-and-phone-lp {
+            max-width: rem(500);
+        }
+
+        p:not(:last-of-type) {
+            margin-bottom: 1em;
+        }
+    }
+}
