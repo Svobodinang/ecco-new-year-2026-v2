@@ -1,0 +1,32 @@
+@use '@/styles/shared.scss' as *;
+
+.results-collage {
+    &__title-block {
+        display: flex;
+        flex-direction: column;
+        gap: rem(28);
+        align-items: center;
+        margin-bottom: rem(60);
+
+        @include portrait-and-phone-lp {
+            margin-bottom: rem(40);
+        }
+    }
+
+    &__text {
+        max-width: rem(600);
+        text-align: center;
+    }
+
+    &__image {
+        display: block;
+        background-color: var(--green);
+        width: 100%;
+        height: rem(665);
+        border-radius: rem(10);
+
+        @include portrait-and-phone-lp {
+            height: rem(163);
+        }
+    }
+}

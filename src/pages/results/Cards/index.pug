@@ -1,0 +1,7 @@
+section.results-cards.container
+    ul.results-cards__cards
+        - var list = [{ num: '250', text: 'участников' }, { num: '15', text: 'классных призов' }, { num: '100', text: 'новогодних фотографий' }, { num: '∞', text: 'количество улыбок' }];
+        each val in list
+            li.results-card.inview.inview--fade-up
+                p.results-card__num.h1!= val.num
+                p.results-card__text.text-accent!= val.text

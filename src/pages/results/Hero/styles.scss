@@ -1,0 +1,26 @@
+@use '@/styles/shared.scss' as *;
+
+.results-hero {
+    padding-block: rem(90);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(30);
+    text-align: center;
+
+    @include phone {
+        gap: rem(40);
+    }
+
+    &__title {
+        color: var(--red);
+    }
+
+    &__text {
+        max-width: rem(460);
+
+        p:not(:last-of-type) {
+            margin-bottom: 1em;
+        }
+    }
+}

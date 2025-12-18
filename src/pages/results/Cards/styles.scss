@@ -1,0 +1,57 @@
+@use '@/styles/shared.scss' as *;
+
+.results-cards {
+    &__cards {
+        display: flex;
+        gap: rem(12);
+        justify-content: center;
+        margin-bottom: rem(142);
+
+        @include portrait-and-phone-lp {
+            flex-wrap: wrap;
+            margin-bottom: rem(54);
+        }
+    }
+
+    .results-card {
+        width: rem(326);
+        max-width: 100%;
+        height: rem(294);
+        background-image: url('/images/results/card.png');
+        background-size: 100% 100%;
+        color: var(--light);
+        padding: rem(23);
+        padding-top: rem(46);
+        border-radius: rem(15);
+        box-shadow: 3px 3px 7px 0 rgb(0 0 0 / 15%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+
+        @include portrait-and-phone-lp {
+            width: rem(295);
+            height: rem(223);
+            gap: rem(10);
+            padding: rem(23);
+            justify-content: center;
+        }
+
+        @for $i from 1 to 5 {
+            &:nth-child(#{$i}) {
+                transition-delay: $i * 0.15s;
+
+                @include portrait-and-phone-lp {
+                    transition-delay: 0s;
+                }
+            }
+        }
+
+        &__num {
+            @include portrait-and-phone-lp {
+                font-size: rem(72);
+            }
+        }
+    }
+}
